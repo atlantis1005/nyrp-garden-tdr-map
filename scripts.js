@@ -8,7 +8,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmRyZWE5OCIsImEiOiJjbTkxejExNXIwNnZ3Mm5td
 
         map.addControl(new mapboxgl.NavigationControl());
 
-        console.log(gardenLots)
 
         map.on('load', () => {
 
@@ -44,9 +43,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmRyZWE5OCIsImEiOiJjbTkxejExNXIwNnZ3Mm5td
                 }
             });
         });
-        //Add a layer to visualize abutting tax lots
+    
         
-        //May explore thie following later
+        //May explore the following later to have markers on the intial view that disappear when zoomed in
 
         // // Add a marker for each garden lot
         // gardenLots.features.forEach((feature) => {
@@ -65,12 +64,13 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmRyZWE5OCIsImEiOiJjbTkxejExNXIwNnZ3Mm5td
         //     });
         // });
 
-        /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+
+// When the user clicks on the button, toggle between hiding and showing the dropdown content 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
 
+  //Fly functionality for each garden when clicked
   document.getElementById('211 Street').addEventListener('click', () => {
     map.flyTo({
         center: [-73.86389, 40.87792],
