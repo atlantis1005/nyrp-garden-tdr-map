@@ -17,6 +17,13 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmRyZWE5OCIsImEiOiJjbTkxejExNXIwNnZ3Mm5td
                 type: 'geojson',
                 data: gardenLots
             })
+            //Add abbutting tax lots data as a source
+            map.addSource('abuttingLots', {
+                type: 'geojson',
+                data: abuttingLots
+            })
+
+            // Add a layer to visualize the garden lots
 
             map.addLayer({
                 id: 'gardenLots',
@@ -27,7 +34,36 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhbmRyZWE5OCIsImEiOiJjbTkxejExNXIwNnZ3Mm5td
                     'fill-opacity': 0.7,
                 }
             })
+            map.addLayer({
+                id: 'abuttingLots',
+                type: 'fill',
+                source: 'abuttingLots', 
+                paint: {
+                    'fill-color': '#59ecff',
+                    'fill-opacity': 0.7,
+                }
+            });
         });
+        //Add a layer to visualize abutting tax lots
+        
+        //May explore thie following later
+
+        // // Add a marker for each garden lot
+        // gardenLots.features.forEach((feature) => {
+        //     const coordinates = feature.geometry.coordinates[0][0][0];
+        //     const marker = new mapboxgl.Marker()
+        //         .setLngLat(coordinates)
+        //         .addTo(map);
+
+        //     // Add a click event to the marker
+        //     marker.getElement().addEventListener('click', () => {
+        //         map.flyTo({
+        //             center: coordinates,
+        //             zoom: 17.5,
+        //             duration: 1800
+        //         });
+        //     });
+        // });
 
         /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */

@@ -77,7 +77,6 @@ nav {
     background-color: #05af5c;
     color: white;
     border: none;
-    border-radius: 6px;
     padding: 10px 16px;
     font-size: 14px;
     font-weight: 500;
@@ -128,12 +127,17 @@ nav {
 
   .gardenList {
     color: black;
-    padding: 12px 16px;
+    padding: 10px 10px;
     text-decoration: none;
     display: block;
     border: none;
     min-width: 130px;
   }
+  .divider{
+    color: rgb(103, 171, 34);
+    /* padding: 3px 3px; */
+  }
+
   /* Change color of dropdown buttons on hover */
   .gardenList:hover {background-color: #ddd;}
   
