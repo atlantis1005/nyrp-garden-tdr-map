@@ -76,8 +76,8 @@ nav {
 /*Floating the map legend to the left*/
 #map-legend {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 62px;
+    left: 358px;
     z-index: 1000;
     background-color: #ffffff;
     padding: 10px;
