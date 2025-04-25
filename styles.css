@@ -73,6 +73,42 @@ nav {
         width: 100%;
     }
 }
+/*Floating the map legend to the left*/
+#map-legend {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.legend-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.legend-color {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    float: left;
+}
+#gardenColor {
+    background-color: #64ed7d;
+}
+#abuttingColor {
+    background-color: #59ecff;
+}
+
 .tdr-variable {
     background-color: #05af5c;
     color: white;
@@ -124,7 +160,7 @@ nav {
     text-decoration: none;
     display: block;
   }
-
+/* For dropdown content */
   .gardenList {
     color: black;
     padding: 10px 10px;
@@ -140,9 +176,8 @@ nav {
 
   /* Change color of dropdown buttons on hover */
   .gardenList:hover {background-color: #ddd;}
-  
-
 
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
+
