@@ -35,25 +35,30 @@
 
 
                   <div class="gardenDropdown">
-                    <button onclick="myFunction()" class="dropbtn">List of Gardens</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <p class= "divider"> The Bronx </p>
-                      <button class="gardenList" id= "211 Street">  211 Street </button>
-                        <button class="gardenList" id= "Bathgate"> Bathgate </button>
-                        <button class="gardenList" id= "Clinton"> Clinton </button>
-                        <button class="gardenList" id= "Rhodebeck"> Rhodebeck </button>
-                        <button class="gardenList" id= "Target Bronx"> Target Bronx </button>
-                        <button class="gardenList" id= "Willis"> Willis </button>
-                        <p class= "divider"> Brooklyn </p>
-                        <button class="gardenList" id= "Bridge Plaza"> Bridge Plaza </button>
-                        <button class="gardenList" id= "Greene Acres"> Greene Acres </button>
-                        <button class="gardenList" id= "Jane Bailey"> Jane Bailey </button>
-                        <button class="gardenList" id= "McLeods"> McLeod's </button>
-                        <button class="gardenList" id= "Scholes"> Scholes </button>
-                        <p class= "divider"> Manhattan </p>
-                        <button class="gardenList" id= "La Casita"> La Casita </button>
-                        <button class="gardenList" id= "Los Amigos"> Los Amigos </button>
-                        <button class="gardenList" id= "Rodale"> Rodale </button>
+                    <button onclick="bronxFunction()" class="dropbtn">Bronx Gardens</button>
+                    <div id="bronxDropdown" class="dropdown-content">
+                      <button class="gardenList" id= "street211">  211 Street </button>
+                        <button class="gardenList" id= "bathgate"> Bathgate </button>
+                        <button class="gardenList" id= "clinton"> Clinton </button>
+                        <button class="gardenList" id= "rhodebeck"> Rhodebeck </button>
+                        <button class="gardenList" id= "targetBronx"> Target Bronx </button>
+                        <button class="gardenList" id= "willis"> Willis </button>
+                    </div>
+                   
+                    <button onclick="brooklynFunction()" class="dropbtn">Brooklyn Gardens</button>
+                    <div id="brooklynDropdown" class="dropdown-content">
+                        <button class="gardenList" id= "bridgePlaza"> Bridge Plaza </button>
+                        <button class="gardenList" id= "greeneAcres"> Greene Acres </button>
+                        <button class="gardenList" id= "janeBailey"> Jane Bailey </button>
+                        <button class="gardenList" id= "mcLeods"> McLeod's </button>
+                        <button class="gardenList" id= "scholes"> Scholes </button>
+                    </div>
+
+                    <button onclick="manhattanFunction()" class="dropbtn">Manhattan Gardens</button>
+                    <div id="manhattanDropdown" class="dropdown-content">
+                        <button class="gardenList" id= "laCasita"> La Casita </button>
+                        <button class="gardenList" id= "losAmigos"> Los Amigos </button>
+                        <button class="gardenList" id= "rodale"> Rodale </button>
                     </div>
                   </div>
 
@@ -89,9 +94,9 @@
             <script src="data/gardenLots.js"></script>
             <script src="data/gardenNames.js"></script>
                 <script src="data/abuttingLots.js"></script>
-                <script src="scripts.js"></script>
+                
         </div>
-
+        <script src="scripts.js"></script>
 </body>
 
 </html>
