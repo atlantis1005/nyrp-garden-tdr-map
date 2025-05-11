@@ -44,7 +44,7 @@ map.on('load', () => {
         }
     })
     map.addLayer({
-        id: 'abuttingLots',
+        id: 'abuttingLotsDefault',
         type: 'fill',
         source: 'abuttingLots',
         paint: {
@@ -251,18 +251,20 @@ function percentToDecimal(str) {
     const num = parseFloat(str);
   return isNaN(num) ? null : num / 100;
   }
+  let showSoftSite = false;
 document.getElementById('toggle-softSite').addEventListener('click', () => {
     console.log('clicked')
 
      // (1) Preprocess data
   abuttingLots.features.forEach(feature => {
     feature.properties.builtFAR = percentToDecimal(feature.properties['abuttingproperties_Percent built']);
+    
   });
   // (2) Remove layer/source if exists
   const layerId = 'abutting-built-layer';
   const sourceId = 'abuttingLots';
 
-  // ⚠️ FIRST: remove any layers that use the source
+//   // ⚠️ FIRST: remove any layers that use the source
   map.getStyle().layers.forEach(layer => {
     const source = map.getLayer(layer.id)?.source;
     if (source === sourceId) {
@@ -270,16 +272,17 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
     }
   });
 
-  // THEN: remove the source (now safe)
+//   // THEN: remove the source (now safe)
   if (map.getSource(sourceId)) {
     map.removeSource(sourceId);
   }
 
-  // Re-add the source
+//   // Re-add the source
   map.addSource(sourceId, {
     type: 'geojson',
     data: abuttingLots
   });
+
 
     
       map.addLayer({
@@ -297,8 +300,35 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
           'fill-opacity': 0.5
         }
       });
-    });
-    
+
+      
+      // handle clicks on the toggle button
+ // document.getElementById('toggle-softSite').addEventListener('click', () => {
+      if (!showSoftSite) {
+          map.setLayoutProperty('abutting-built-layer', 'visibility', 'visible');
+          document.getElementById('toggle-softSite').textContent = 'Hide Soft Site Analysis';
+          showSoftSite = true;
+          
+          
+      } else {
+          map.setLayoutProperty('abutting-built-layer', 'visibility', 'none');
+          map.addLayer({
+            id: 'abuttingLotsDefault',
+            type: 'fill',
+            source: 'abuttingLots',
+            paint: {
+                'fill-color': '#59ecff',
+                'fill-opacity': 0.7,
+            }
+        });
+          document.getElementById('toggle-softSite').textContent = 'Show Soft Site Analysis';
+          showSoftSite = false;
+      }
+         
+
+    })
+   
+   
 
 
 
