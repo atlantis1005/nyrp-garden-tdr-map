@@ -231,88 +231,76 @@ window.onclick = function (event) {
 }
 function percentToDecimal(str) {
     const num = parseFloat(str);
-  return isNaN(num) ? null : num / 100;
-  }
-  
-// const builtFAR = parseFloat('abuttingproperties_Percent built')/100;
-// abuttingLots.features.forEach(function (feature) {
-//     console.log(feature.properties['abuttingproperties_Percent built']);
-//     const builtFAR = percentToDecimal('abuttingproperties_Percent built');
-//     console.log(builtFAR);
-//     // if (feature.properties['abuttingproperties_Percent built'] < 0.5) {
-//     //     console.log('less than 0.5')
-//     // } else if (feature.properties['abuttingproperties_Percent built'] > 0.5) {
-//     //     console.log('greater than 0.5')
-//     // }
-// })
-// When soft site analysis button is clicked, add a layer to visualize the soft site analysis
+    return isNaN(num) ? null : num / 100;
+}
+
 
 function percentToDecimal(str) {
     const num = parseFloat(str);
-  return isNaN(num) ? null : num / 100;
-  }
-  let showSoftSite = false;
+    return isNaN(num) ? null : num / 100;
+}
+let showSoftSite = false;
 document.getElementById('toggle-softSite').addEventListener('click', () => {
     console.log('clicked')
 
-     // (1) Preprocess data
-  abuttingLots.features.forEach(feature => {
-    feature.properties.builtFAR = percentToDecimal(feature.properties['abuttingproperties_Percent built']);
-    
-  });
-  // (2) Remove layer/source if exists
-  const layerId = 'abutting-built-layer';
-  const sourceId = 'abuttingLots';
+    // (1) Preprocess data
+    abuttingLots.features.forEach(feature => {
+        feature.properties.builtFAR = percentToDecimal(feature.properties['abuttingproperties_Percent_built']);
 
-//   // ⚠️ FIRST: remove any layers that use the source
-  map.getStyle().layers.forEach(layer => {
-    const source = map.getLayer(layer.id)?.source;
-    if (source === sourceId) {
-      map.removeLayer(layer.id);
+    });
+    // (2) Remove layer/source if exists
+    const layerId = 'abutting-built-layer';
+    const sourceId = 'abuttingLots';
+
+    //   // ⚠️ FIRST: remove any layers that use the source
+    map.getStyle().layers.forEach(layer => {
+        const source = map.getLayer(layer.id)?.source;
+        if (source === sourceId) {
+            map.removeLayer(layer.id);
+        }
+    });
+
+    //   // THEN: remove the source (now safe)
+    if (map.getSource(sourceId)) {
+        map.removeSource(sourceId);
     }
-  });
 
-//   // THEN: remove the source (now safe)
-  if (map.getSource(sourceId)) {
-    map.removeSource(sourceId);
-  }
-
-//   // Re-add the source
-  map.addSource(sourceId, {
-    type: 'geojson',
-    data: abuttingLots
-  });
+    //   // Re-add the source
+    map.addSource(sourceId, {
+        type: 'geojson',
+        data: abuttingLots
+    });
 
 
-    
-      map.addLayer({
+
+    map.addLayer({
         id: 'abutting-built-layer',
         type: 'fill',
         source: 'abuttingLots',
         paint: {
-          'fill-color': [
-            'case',
-            ['<', ['get', 'builtFAR'], 0.5], '#42f5d4',
-            ['>', ['get', 'builtFAR'], 1.0], '#ff0000',
-            ['all', ['>', ['get', 'builtFAR'], 0.5], ['<', ['get', 'builtFAR'], 1.0]], '#ffb300',
-            '#cccccc' // fallback
-          ],
-          'fill-opacity': 0.5
+            'fill-color': [
+                'case',
+                ['<', ['get', 'builtFAR'], 0.5], '#42f5d4',
+                ['>', ['get', 'builtFAR'], 1.0], '#ff0000',
+                ['all', ['>', ['get', 'builtFAR'], 0.5], ['<', ['get', 'builtFAR'], 1.0]], '#ffb300',
+                '#cccccc' // fallback
+            ],
+            'fill-opacity': 0.5
         }
-      });
+    });
 
-      
-      // handle clicks on the toggle button
- // document.getElementById('toggle-softSite').addEventListener('click', () => {
-      if (!showSoftSite) {
-          map.setLayoutProperty('abutting-built-layer', 'visibility', 'visible');
-          document.getElementById('toggle-softSite').textContent = 'Hide Soft Site Analysis';
-          showSoftSite = true;
-          
-          
-      } else {
-          map.setLayoutProperty('abutting-built-layer', 'visibility', 'none');
-          map.addLayer({
+
+    // handle clicks on the toggle button
+    // document.getElementById('toggle-softSite').addEventListener('click', () => {
+    if (!showSoftSite) {
+        map.setLayoutProperty('abutting-built-layer', 'visibility', 'visible');
+        document.getElementById('toggle-softSite').textContent = 'Hide Soft Site Analysis';
+        showSoftSite = true;
+
+
+    } else {
+        map.setLayoutProperty('abutting-built-layer', 'visibility', 'none');
+        map.addLayer({
             id: 'abuttingLotsDefault',
             type: 'fill',
             source: 'abuttingLots',
@@ -321,14 +309,49 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
                 'fill-opacity': 0.7,
             }
         });
-          document.getElementById('toggle-softSite').textContent = 'Show Soft Site Analysis';
-          showSoftSite = false;
-      }
-         
+        document.getElementById('toggle-softSite').textContent = 'Show Soft Site Analysis';
+        showSoftSite = false;
+    }
 
-    })
-   
-   
+
+})
+
+map.on('click', 'abutting-built-layer', (e) => {
+    const feature = e.features[0];
+
+    // Example: log feature info
+    console.log('Clicked feature:', feature);
+
+    // Optional: show a popup
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(`<strong>${feature.properties.abuttingproperties_Owner}</strong><br> % Built FAR: ${feature.properties.abuttingproperties_Percent_built}`)
+        .addTo(map);
+
+
+});
+
+//change the cursor to pointer when hovering over the layer
+map.on('mouseenter', 'abutting-built-layer', () => {
+    map.getCanvas().style.cursor = 'pointer';
+}
+);
+//change the cursor back to default when not hovering over the layer
+map.on('mouseleave', 'abutting-built-layer', () => {
+    map.getCanvas().style.cursor = '';
+}
+);
+//disappear when clicked elsewhere
+map.on('click', (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+        layers: ['abutting-built-layer']
+    });
+    if (!features.length) {
+        map.getCanvas().style.cursor = '';
+    }
+});
+
+
 
 
 
