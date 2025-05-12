@@ -15,9 +15,10 @@ const map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 
-
 //Declare marker
 let marker;
+
+const gardenColor = '#05af5c';
 
 map.on('load', () => {
 
@@ -39,7 +40,7 @@ map.on('load', () => {
         type: 'fill',
         source: 'gardenLots',
         paint: {
-            'fill-color': '#64ed7d',
+            'fill-color': gardenColor,
             'fill-opacity': 0.7,
         }
     })
@@ -59,7 +60,7 @@ map.on('load', () => {
         const coordinates = feature.geometry.coordinates[0][0][0];
         const name = feature.properties.Name;
 
-        const marker = new mapboxgl.Marker({ color: '#05af5c' })
+        const marker = new mapboxgl.Marker({ color: gardenColor })
             .setLngLat(coordinates)
             .addTo(map);
 
@@ -73,6 +74,8 @@ map.on('load', () => {
             marker.getElement().style.display = currentZoom > 15 ? 'none' : 'block';
         });
     });
+
+    
 });
 
 
@@ -288,13 +291,30 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
             'fill-opacity': 0.5
         }
     });
+   
 
-
+    const legendItemsContainer = document.getElementById("legend-items");
     // handle clicks on the toggle button
-    // document.getElementById('toggle-softSite').addEventListener('click', () => {
+   // document.getElementById('toggle-softSite').addEventListener('click', () => {
     if (!showSoftSite) {
         map.setLayoutProperty('abutting-built-layer', 'visibility', 'visible');
         document.getElementById('toggle-softSite').textContent = 'Hide Soft Site Analysis';
+         // Replace legend items for soft site analysis
+    legendItemsContainer.innerHTML = ''; // clear current items
+    legendItemsContainer.innerHTML += `
+      <div class="legend-item">
+        <span class="legend-color" style="background:#42f5d4;"></span>
+        <span class="legend-label"> Very Underbuilt (FAR &lt; 50%)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color" style="background:#ffb300;"></span>
+        <span class="legend-label">Slightly Underbuilt (50% ≤ FAR ≤ 100%)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color" style="background:#ff0000;"></span>
+        <span class="legend-label">Overbuilt (FAR &gt; 100%)</span>
+      </div>
+    `;
         showSoftSite = true;
 
 
@@ -309,6 +329,12 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
                 'fill-opacity': 0.7,
             }
         });
+        legendItemsContainer.innerHTML = `
+      <div class="legend-item">
+        <span class="legend-color" style="background:#59ecff;"></span>
+        <span class="legend-label">All Abutting Lots</span>
+      </div>
+    `;
         document.getElementById('toggle-softSite').textContent = 'Show Soft Site Analysis';
         showSoftSite = false;
     }
@@ -351,8 +377,11 @@ map.on('click', (e) => {
     }
 });
 
-
-
+// Add a splash modal
+document.addEventListener('DOMContentLoaded', () => {
+    const splashModal = new bootstrap.Modal(document.getElementById('splashModal'));
+    splashModal.show();
+  });
 
 
 
