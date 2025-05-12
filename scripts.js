@@ -42,6 +42,7 @@ map.on('load', () => {
         paint: {
             'fill-color': gardenColor,
             'fill-opacity': 0.7,
+            'fill-outline-color': '#000000'
         }
     })
     map.addLayer({
@@ -51,6 +52,7 @@ map.on('load', () => {
         paint: {
             'fill-color': '#59ecff',
             'fill-opacity': 0.7,
+            'fill-outline-color': '#000000'
         }
     });
     const gardenLotsData = gardenLots.features;
@@ -102,6 +104,7 @@ function closeAllDropdowns() {
     });
 }
 
+// When the user clicks on a garden site, show the selected garden name and transferrable SF
 document.querySelectorAll('.gardenList').forEach(button => {
     button.addEventListener('click', () => {
       const siteName = button.getAttribute('data-name');
@@ -113,7 +116,7 @@ document.querySelectorAll('.gardenList').forEach(button => {
         selectedGarden.textContent = 
           `${siteData.gardenSites}`;
           tSF.textContent = 
-          `Transferrable SF = ${siteData.transferrableSF}`;
+          `Garden's Transferrable SF = ${siteData.transferrableSF}`;
           selectedGarden.classList.add('visible');
           tSF.classList.add('visible');
       } else {
@@ -254,16 +257,16 @@ window.onclick = function (event) {
         }
     }
 }
+// Function to convert percentage string to decimal
 function percentToDecimal(str) {
     const num = parseFloat(str);
     return isNaN(num) ? null : num / 100;
 }
 
-
-function percentToDecimal(str) {
-    const num = parseFloat(str);
-    return isNaN(num) ? null : num / 100;
-}
+// Define colors for the legend
+const veryUnderbuiltColor = '#a9ed85';
+const slightlyUnderbuiltColor = '#ffb300';    
+const overbuiltColor = '#ff0000';
 let showSoftSite = false;
 document.getElementById('toggle-softSite').addEventListener('click', () => {
     console.log('clicked')
@@ -305,12 +308,13 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
         paint: {
             'fill-color': [
                 'case',
-                ['<', ['get', 'builtFAR'], 0.5], '#42f5d4',
+                ['<', ['get', 'builtFAR'], 0.5], veryUnderbuiltColor,
                 ['>', ['get', 'builtFAR'], 1.0], '#ff0000',
                 ['all', ['>', ['get', 'builtFAR'], 0.5], ['<', ['get', 'builtFAR'], 1.0]], '#ffb300',
                 '#cccccc' // fallback
             ],
-            'fill-opacity': 0.5
+            'fill-opacity': 0.5,
+            'fill-outline-color': '#000000'
         }
     });
    
@@ -325,7 +329,7 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
     legendItemsContainer.innerHTML = ''; // clear current items
     legendItemsContainer.innerHTML += `
       <div class="legend-item">
-        <span class="legend-color" style="background:#42f5d4;"></span>
+        <span class="legend-color" style="background:#a9ed85;"></span>
         <span class="legend-label"> Very Underbuilt (FAR &lt; 50%)</span>
       </div>
       <div class="legend-item">
@@ -349,6 +353,7 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
             paint: {
                 'fill-color': '#59ecff',
                 'fill-opacity': 0.7,
+                'fill-outline-color': '#000000'
             }
         });
         legendItemsContainer.innerHTML = `
@@ -373,7 +378,8 @@ map.on('click', 'abutting-built-layer', (e) => {
     // Optional: show a popup
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML(`<strong>${feature.properties.abuttingproperties_Owner}</strong><br> % Built FAR: ${feature.properties.abuttingproperties_Percent_built}`)
+        .setHTML(`<strong>${feature.properties.abuttingproperties_Owner}</strong><br> % Built FAR: ${feature.properties.abuttingproperties_Percent_built}
+            <br> <strong>Chance of Redevelopment:</strong> ${feature.properties.abuttingproperties_chance_redevelopment}`)
         .addTo(map);
 
 
@@ -408,3 +414,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  
