@@ -77,7 +77,7 @@ map.on('load', () => {
         });
     });
 
-    
+
 });
 
 
@@ -107,24 +107,24 @@ function closeAllDropdowns() {
 // When the user clicks on a garden site, show the selected garden name and transferrable SF
 document.querySelectorAll('.gardenList').forEach(button => {
     button.addEventListener('click', () => {
-      const siteName = button.getAttribute('data-name');
-      const siteData = gardenNames.find(site => site.gardenSites === siteName);
-      const selectedGarden = document.getElementById('selectedGarden');
-      const tSF = document.getElementById('tSF');
+        const siteName = button.getAttribute('data-name');
+        const siteData = gardenNames.find(site => site.gardenSites === siteName);
+        const selectedGarden = document.getElementById('selectedGarden');
+        const tSF = document.getElementById('tSF');
 
-      if (siteData) {
-        selectedGarden.textContent = 
-          `${siteData.gardenSites}`;
-          tSF.textContent = 
-          `Garden's Transferrable SF = ${siteData.transferrableSF}`;
-          selectedGarden.classList.add('visible');
-          tSF.classList.add('visible');
-      } else {
-        selectedGarden.textContent = 
-          `No data found for ${siteName}`;
-      }
+        if (siteData) {
+            selectedGarden.textContent =
+                `${siteData.gardenSites}`;
+            tSF.textContent =
+                `Garden's Transferrable SF = ${siteData.transferrableSF}`;
+            selectedGarden.classList.add('visible');
+            tSF.classList.add('visible');
+        } else {
+            selectedGarden.textContent =
+                `No data found for ${siteName}`;
+        }
     });
-  });
+});
 
 //Fly functionality for each garden when clicked
 document.getElementById('street211').addEventListener('click', () => {
@@ -265,7 +265,7 @@ function percentToDecimal(str) {
 
 // Define colors for the legend
 const veryUnderbuiltColor = '#a9ed85';
-const slightlyUnderbuiltColor = '#ffb300';    
+const slightlyUnderbuiltColor = '#ffb300';
 const overbuiltColor = '#ff0000';
 let showSoftSite = false;
 document.getElementById('toggle-softSite').addEventListener('click', () => {
@@ -317,17 +317,17 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
             'fill-outline-color': '#000000'
         }
     });
-   
+
 
     const legendItemsContainer = document.getElementById("legend-items");
     // handle clicks on the toggle button
-   // document.getElementById('toggle-softSite').addEventListener('click', () => {
+    // document.getElementById('toggle-softSite').addEventListener('click', () => {
     if (!showSoftSite) {
         map.setLayoutProperty('abutting-built-layer', 'visibility', 'visible');
         document.getElementById('toggle-softSite').textContent = 'Hide Soft Site Analysis';
-         // Replace legend items for soft site analysis
-    legendItemsContainer.innerHTML = ''; // clear current items
-    legendItemsContainer.innerHTML += `
+        // Replace legend items for soft site analysis
+        legendItemsContainer.innerHTML = ''; // clear current items
+        legendItemsContainer.innerHTML += `
       <div class="legend-item">
         <span class="legend-color" style="background:#a9ed85;"></span>
         <span class="legend-label"> Very Underbuilt (FAR &lt; 50%)</span>
@@ -409,9 +409,8 @@ map.on('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     const splashModal = new bootstrap.Modal(document.getElementById('splashModal'));
     splashModal.show();
-  });
+});
 
 
 
 
-  

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 
 <head>
     <meta charset="utf-8">
@@ -13,34 +13,38 @@
 </head>
 
 <body>
-     <!-- Splash Modal -->
-     <div class="modal fade" id="splashModal" tabindex="-1">
+    <!-- Splash Modal -->
+    <div class="modal fade" id="splashModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">New York Restoration Project Garden Map for Transferrable Development Rights</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New York Restoration Project Garden Map for Transferrable Development Rights
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <img src="https://www.nyrp.org/wp-content/uploads/2021/11/nyrp-new-roots-irc-urban-farm-gardens-for-the-city-1200x675.webp"
+                        alt="Description of image" class="img-fluid rounded" width="400" height="300">
+                    <p></p>
+                    <p>
+                        This map shows 14 gardens that were identified as high priority by the New York Restoration
+                        Project
+                        (NYRP) for potential transferrable development rights (TDR) transactions. This map is an spatial
+                        demonstration of
+                        a few of the variables that are relevant to TDR transactions. Full context and analysis of these
+                        garden sites can be found
+                        in the TDR database <a
+                            href="https://docs.google.com/spreadsheets/d/13HCskk-bk80KWm122C3RxG64JZsTojb2KYkK-4VXzfU/edit?usp=sharing"
+                            target="_blank" rel="noopener noreferrer">here</a>.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Explore the map</button>
+                </div>
             </div>
-            <div class="modal-body">
-              
-                <img src="https://www.nyrp.org/wp-content/uploads/2021/11/nyrp-new-roots-irc-urban-farm-gardens-for-the-city-1200x675.webp" 
-                alt="Description of image" 
-                class="img-fluid rounded"
-                width="400" height="300">
-                <p></p>
-                <p>
-                This map shows 14 gardens that were identified as high priority by the New York Restoration Project
-                (NYRP) for potential transferrable development rights (TDR) transactions. This map is an spatial demonstration of 
-                a few of the variables that are relevant to TDR transactions. Full context and analysis of these garden sites can be found
-                in the TDR database <a href="https://docs.google.com/spreadsheets/d/13HCskk-bk80KWm122C3RxG64JZsTojb2KYkK-4VXzfU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here</a>.
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Explore the map</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <div id="main-container">
         <nav>
             <div class="title">New York Restoration Project Garden Map for Transferrable Development Right Potential
@@ -65,46 +69,47 @@
                 <!-- Creating dropdown menus for each Borough -->
 
 
-                  <div class="gardenDropdown">
+                <div class="gardenDropdown">
                     <button onclick="bronxFunction()" class="dropbtn">Bronx Gardens</button>
                     <div id="bronxDropdown" class="dropdown-content">
-                      <button class="gardenList" id= "street211" data-name="211 Street">  211 Street </button>
-                        <button class="gardenList" id= "bathgate" data-name="Bathgate"> Bathgate  </button>
-                        <button class="gardenList" id= "clinton" data-name="Clinton"> Clinton </button>
-                        <button class="gardenList" id= "rhodebeck" data-name="Rhodebeck"> Rhodebeck </button>
-                        <button class="gardenList" id= "targetBronx" data-name="Target Bronx"> Target Bronx </button>
-                        <button class="gardenList" id= "willis" data-name="Willis"> Willis </button>
+                        <button class="gardenList" id="street211" data-name="211 Street"> 211 Street </button>
+                        <button class="gardenList" id="bathgate" data-name="Bathgate"> Bathgate </button>
+                        <button class="gardenList" id="clinton" data-name="Clinton"> Clinton </button>
+                        <button class="gardenList" id="rhodebeck" data-name="Rhodebeck"> Rhodebeck </button>
+                        <button class="gardenList" id="targetBronx" data-name="Target Bronx"> Target Bronx </button>
+                        <button class="gardenList" id="willis" data-name="Willis"> Willis </button>
                     </div>
-                   
+
                     <button onclick="brooklynFunction()" class="dropbtn">Brooklyn Gardens</button>
                     <div id="brooklynDropdown" class="dropdown-content">
-                        <button class="gardenList" id= "bridgePlaza" data-name="Bridge Plaza"> Bridge Plaza </button>
-                        <button class="gardenList" id= "greeneAcres" data-name="Greene Acres"> Greene Acres </button>
-                        <button class="gardenList" id= "janeBailey" data-name="Jane Bailey"> Jane Bailey </button>
-                        <button class="gardenList" id= "mcLeods" data-name="McLeod's"> McLeod's </button>
-                        <button class="gardenList" id= "scholes" data-name="Scholes"> Scholes </button>
+                        <button class="gardenList" id="bridgePlaza" data-name="Bridge Plaza"> Bridge Plaza </button>
+                        <button class="gardenList" id="greeneAcres" data-name="Greene Acres"> Greene Acres </button>
+                        <button class="gardenList" id="janeBailey" data-name="Jane Bailey"> Jane Bailey </button>
+                        <button class="gardenList" id="mcLeods" data-name="McLeod's"> McLeod's </button>
+                        <button class="gardenList" id="scholes" data-name="Scholes"> Scholes </button>
                     </div>
 
                     <button onclick="manhattanFunction()" class="dropbtn">Manhattan Gardens</button>
                     <div id="manhattanDropdown" class="dropdown-content">
-                        <button class="gardenList" id= "laCasita" data-name="La Casita"> La Casita </button>
-                        <button class="gardenList" id= "losAmigos" data-name="Los Amigos"> Los Amigos </button>
-                        <button class="gardenList" id= "rodale" data-name="Rodale"> Rodale </button>
+                        <button class="gardenList" id="laCasita" data-name="La Casita"> La Casita </button>
+                        <button class="gardenList" id="losAmigos" data-name="Los Amigos"> Los Amigos </button>
+                        <button class="gardenList" id="rodale" data-name="Rodale"> Rodale </button>
                     </div>
-                  </div>
+                </div>
 
 
-                
-                <p><strong> More abutting lot info can be found by clicking on the lots with the Soft Site Analysis On</strong></p>
-                
+
+                <p><strong> Owner, %Built FAR, and "Chance of Redevelopment" information can be found by clicking on the
+                        abutting lots with the Soft Site Analysis Shown</strong></p>
+
                 <button id="toggle-softSite" class="tdr-variable">
-                Show Soft Site Analysis
+                    Show Soft Site Analysis
                 </button>
 
-                
-                
+
+
             </div>
-            
+
             <div id="map"></div>
 
             <!-- Creating a legend -->
@@ -118,18 +123,18 @@
                     <div class="legend-item">
                         <span class="legend-color" style="background:#59ecff;"></span>
                         <span class="legend-label">All Abutting Lots</span>
-                      </div>
+                    </div>
                 </div>
                 <!-- Loading data and js file -->
-            <script src="data/gardenLots.js"></script>
-            <script src="data/gardenNames.js"></script>
+                <script src="data/gardenLots.js"></script>
+                <script src="data/gardenNames.js"></script>
                 <script src="data/abuttingLots.js"></script>
-                
-        </div>
- 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-        <script src="scripts.js"></script>
+
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script src="scripts.js"></script>
 
 </body>
 

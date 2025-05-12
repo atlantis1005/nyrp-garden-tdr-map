@@ -49,7 +49,7 @@ nav {
     overflow-y: scroll;
     box-sizing: border-box;
     height: 100vh;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     flex-direction: column;
 }
 
@@ -220,9 +220,10 @@ nav {
     font-weight: 600;
     background-color: #05af5c;
     padding: 10px;
-    
-    
+
+
 }
+
 #tSF.visible {
     font-size: medium;
     text-align: center;
@@ -230,5 +231,5 @@ nav {
     background-color: #ffffff;
     padding: 10px;
     margin-bottom: 15px;
-    
+
 }
