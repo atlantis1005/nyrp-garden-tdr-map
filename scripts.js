@@ -101,6 +101,28 @@ function closeAllDropdowns() {
         drop.classList.remove('show');
     });
 }
+
+document.querySelectorAll('.gardenList').forEach(button => {
+    button.addEventListener('click', () => {
+      const siteName = button.getAttribute('data-name');
+      const siteData = gardenNames.find(site => site.gardenSites === siteName);
+      const selectedGarden = document.getElementById('selectedGarden');
+      const tSF = document.getElementById('tSF');
+
+      if (siteData) {
+        selectedGarden.textContent = 
+          `${siteData.gardenSites}`;
+          tSF.textContent = 
+          `Transferrable SF = ${siteData.transferrableSF}`;
+          selectedGarden.classList.add('visible');
+          tSF.classList.add('visible');
+      } else {
+        selectedGarden.textContent = 
+          `No data found for ${siteName}`;
+      }
+    });
+  });
+
 //Fly functionality for each garden when clicked
 document.getElementById('street211').addEventListener('click', () => {
     map.flyTo({

@@ -48,6 +48,9 @@ nav {
     font-size: 0.9rem;
     overflow-y: scroll;
     box-sizing: border-box;
+    height: 100vh;
+    overflow-x: hidden; 
+    flex-direction: column;
 }
 
 #map {
@@ -91,10 +94,7 @@ nav {
     height: max-content;
     /* Adjust to fit content */
     padding: 20px;
-
     line-height: 1.4;
-
-
 }
 
 .legend-title {
@@ -212,4 +212,23 @@ nav {
     padding: 40px;
     background-color: #e6ffe5;
 
+}
+
+#selectedGarden.visible {
+    font-size: medium;
+    text-align: center;
+    font-weight: 600;
+    background-color: #05af5c;
+    padding: 10px;
+    
+    
+}
+#tSF.visible {
+    font-size: medium;
+    text-align: center;
+    font-weight: 400;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+    
 }
