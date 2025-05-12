@@ -126,7 +126,7 @@ document.querySelectorAll('.gardenList').forEach(button => {
     });
 });
 
-//Fly functionality for each garden when clicked
+//Fly functionality for each garden site when clicked
 document.getElementById('street211').addEventListener('click', () => {
     map.flyTo({
         center: [-73.86389, 40.87792],
