@@ -6,6 +6,6 @@ transactions with private entities. One of our deliverables was a database on Go
 relevant zoning information as well as information about the abutting properties for the purpose of better understanding what potential development rights transactions may arise.
 For my Advanced GIS project, I wanted to see how best to represent some of that data spatially. 
 
-This project shows a soft site analysis for the abutting lots surrounding each garden and provides information about how much transferrable square footage a garden can transfer to a site. E
+This project shows a soft site analysis for the abutting lots surrounding each garden and provides information about how much transferrable square footage a garden can transfer to a site. 
 
 
