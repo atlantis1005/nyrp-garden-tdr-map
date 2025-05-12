@@ -214,6 +214,7 @@ nav {
 
 }
 
+/* For garden transferrable sf info */
 #selectedGarden.visible {
     font-size: medium;
     text-align: center;

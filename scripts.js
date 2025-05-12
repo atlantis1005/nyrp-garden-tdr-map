@@ -269,7 +269,6 @@ const slightlyUnderbuiltColor = '#ffb300';
 const overbuiltColor = '#ff0000';
 let showSoftSite = false;
 document.getElementById('toggle-softSite').addEventListener('click', () => {
-    console.log('clicked')
 
     // (1) Preprocess data
     abuttingLots.features.forEach(feature => {
@@ -299,7 +298,7 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
         data: abuttingLots
     });
 
-
+    // Add the layer
 
     map.addLayer({
         id: 'abutting-built-layer',
@@ -318,10 +317,9 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
         }
     });
 
-
+    // Add legend items¸
     const legendItemsContainer = document.getElementById("legend-items");
     // handle clicks on the toggle button
-    // document.getElementById('toggle-softSite').addEventListener('click', () => {
     if (!showSoftSite) {
         map.setLayoutProperty('abutting-built-layer', 'visibility', 'visible');
         document.getElementById('toggle-softSite').textContent = 'Hide Soft Site Analysis';
@@ -372,10 +370,8 @@ document.getElementById('toggle-softSite').addEventListener('click', () => {
 map.on('click', 'abutting-built-layer', (e) => {
     const feature = e.features[0];
 
-    // Example: log feature info
-    console.log('Clicked feature:', feature);
 
-    // Optional: show a popup
+    // Show a popup
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
         .setHTML(`<strong>${feature.properties.abuttingproperties_Owner}</strong><br> % Built FAR: ${feature.properties.abuttingproperties_Percent_built}
